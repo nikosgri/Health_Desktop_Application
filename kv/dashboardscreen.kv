@@ -1,12 +1,55 @@
-#import utils kivy.utils
+#:import utils kivy.utils
+
 
 <DashboardScreen>:
     BoxLayout:
         orientation: "vertical"
-        canvas:
+        canvas: 
             Color:
-                rgba:utils.get_color_from_hex(#0d1727)
+                rgba: utils.get_color_from_hex("#0d1727")
             Rectangle:
-                size: self.size 
+                size: self.size
                 pos: self.pos
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint:(1, 0.03)
+            spacing: "10"
+            canvas:
+                Color:
+                    rgba: utils.get_color_from_hex("#425f8f")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Spacer:
+                size_hint:(0.75,1)
+
+            #Minimize Button
+            ImageButton:
+                id: minimize_btn_id
+                source: "icons/minimize.png"
+                size_hint: (None, None)
+                height: "25dp"
+                width: "35dp"
+                pos_hint: {"center_y": 0.48}
+                on_release: 
+                    app.minimize()
+
+            #Close Button
+            ImageButton:
+                id: close_btn_id
+                source: "icons/cross.png"
+                size_hint: (None, None)
+                heigth: "18dp"
+                width: "18dp"
+                pos_hint: {"center_y": 0.45}
+                on_release: 
+                    app.close()
+
+            #Dummy widget for taking the left space of minimize, close
+            Spacer:
+                size_hint:(0.01,1)
                 
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint:(1,0.97) 
+        
