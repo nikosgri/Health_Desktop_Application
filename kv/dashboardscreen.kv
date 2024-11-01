@@ -1,6 +1,5 @@
 #:import utils kivy.utils
 
-
 <DashboardScreen>:
     BoxLayout:
         orientation: "vertical"
@@ -10,20 +9,23 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
+
+        ##-------- START OF TOP BAR --------##
         BoxLayout:
             orientation: "horizontal"
-            size_hint:(1, 0.03)
-            spacing: "10"
+            size_hint: (1, 0.03)
+            spacing: "10dp"
             canvas:
                 Color:
                     rgba: utils.get_color_from_hex("#425f8f")
                 Rectangle:
                     size: self.size
                     pos: self.pos
-            Spacer:
-                size_hint:(0.75,1)
 
-            #Minimize Button
+            Spacer:
+                size_hint: (0.75, 1)
+
+            # Minimize Button
             ImageButton:
                 id: minimize_btn_id
                 source: "icons/minimize.png"
@@ -31,25 +33,86 @@
                 height: "25dp"
                 width: "35dp"
                 pos_hint: {"center_y": 0.48}
-                on_release: 
-                    app.minimize()
+                on_release: app.minimize()
 
-            #Close Button
+            # Close Button
             ImageButton:
                 id: close_btn_id
                 source: "icons/cross.png"
                 size_hint: (None, None)
-                heigth: "18dp"
+                height: "18dp"
                 width: "18dp"
                 pos_hint: {"center_y": 0.45}
-                on_release: 
-                    app.close()
+                on_release: app.close()
 
-            #Dummy widget for taking the left space of minimize, close
             Spacer:
-                size_hint:(0.01,1)
-                
+                size_hint: (0.01, 1)
+        ##-------- END OF TOP BAR --------##
+
+        ##-------- START OF TOP SEARCH BAR & DATE BAR --------##
+        Spacer:
+            size_hint: (1, 0.04)
+
         BoxLayout:
-            orientation: "horizontal"
-            size_hint:(1,0.97) 
-        
+            orientation: "vertical"
+            size_hint: (1, 0.93)
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: (1, 0.1)
+
+                Label:
+                    text: "Enter Country: "
+                    size_hint: (0.15, 0.4)
+                    color: utils.get_color_from_hex("#2b2f43")
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: (0.25, 0.4)
+
+                    TextInput:
+                        hint_text: "e.g. Greece"
+                        font_size: "15sp"
+                        font_name: "barlow-reg"
+                        size_hint: (1,0.93)
+                        background_color: 0, 0, 0, 0
+                        foreground_color: 0.8, 0.8, 0.8, 1
+
+                    BoxLayout:
+                        size_hint: (1, 0.03)
+                        canvas:
+                            Color:
+                                rgba: utils.get_color_from_hex("#2a2f44")
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+                    Spacer:
+                        size_hint: (1, 0.27)
+
+                ImageButton:
+                    source: "icons/go.png"
+                    size_hint: (0.1, 0.4)
+                    allow_stretch: True
+                    keep_aspect: False
+
+                Spacer:
+                    size_hint: (0.55, 1)
+
+                Label:
+                    id: date_id
+                    text: "[b]August 25, 2024[/b]"
+                    markup: True
+                    size_hint: (0.1, 0.5)
+                    font_size: "15sp"
+                    font_name: "barlow-reg"
+                    color: utils.get_color_from_hex("#2b2f43")
+
+                Spacer:
+                    size_hint: (0.02, 1)
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: (1, 0.83)
+        ##-------- END OF TOP SEARCH BAR & DATE BAR --------##
+
