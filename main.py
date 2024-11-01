@@ -12,8 +12,6 @@ from datetime import date
 from covid import Covid
 from kivy.uix.boxlayout import BoxLayout
 
-
-
 Config.set('graphics','width','1200')
 Config.set('graphics', 'height','900')
 Config.set('graphics','borderless','1')
@@ -32,7 +30,8 @@ class DashboardScreen(Screen):
     pass
 
 
-GUI = Builder.load_file("main.kv") # Load the main file to builder
+# Load the main file to builder
+GUI = Builder.load_file("main.kv") 
 
 class MainApp(App):
 
@@ -40,7 +39,16 @@ class MainApp(App):
         return GUI
     
     def on_start(self):
-        pass
+        #Pass the fonts to the UI
+        LabelBase.register(name = 'myraid_pro_reg', fn_regular = 'MYRIADPRO-CONDIT.OTF')
+        LabelBase.register(name = 'd_din_reg', fn_regular = 'd-din.regular.ttf')
+        LabelBase.register(name = 'roboto-medium', fn_regular = 'Roboto-Medium.ttf')
+        LabelBase.register(name = 'roboto-thin', fn_regular = 'Roboto-Thin.ttf')
+        LabelBase.register(name = 'bistecca', fn_regular = 'Bistecca.ttf')
+        LabelBase.register(name = 'teko-reg', fn_regular = 'Teko-Regular.ttf')
+        LabelBase.register(name = 'barlow-reg', fn_regular = 'BarlowSemiCondensed-Regular.ttf')
+        LabelBase.register(name = 'barlow-bold', fn_regular = 'BarlowSemiCondensed-SemiBold.ttf')
+
     
     def close(self):
         quit()
