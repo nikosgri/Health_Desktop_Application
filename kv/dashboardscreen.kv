@@ -1,4 +1,5 @@
-#:import utils kivy.utils
+#: import utils kivy.utils
+
 
 <DashboardScreen>:
     BoxLayout:
@@ -66,10 +67,10 @@
                 color: utils.get_color_from_hex("#748ca6")
             Spacer:
                 size_hint: (0.03,1)
-            #Image:
-            #    source: "icons/ripple.gif"
-            #    size_hint: (0.1, 1)
-            #    anim_delay: 0.1  # Adjust this for animation speed
+            Image:
+                source: "icons/ripple.gif"
+                size_hint: (0.1, 1)
+                anim_delay: 0.1  # Adjust this for animation speed
             Spacer:
                 size_hint: (0.3,1)
         ##-------- END OF TOP LABEL --------##
@@ -333,6 +334,11 @@
                         Rectangle:
                             size: self.size
                             pos: self.pos
+                    Bar:
+                        value: 90
+                        size_hint:(0.01,0.9)
+                    Spacer:
+                        size_hint:(0.99, 1)
                 Spacer:
                     size_hint: (0.01,1)
                 
@@ -395,6 +401,5 @@
 
 
         
-
 
 
