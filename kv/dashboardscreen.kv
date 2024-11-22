@@ -79,10 +79,9 @@
         BoxLayout:
             orientation: "vertical"
             size_hint: (1, 0.87)
-
             BoxLayout:
                 orientation: "horizontal"
-                size_hint: (1, 0.1)
+                size_hint: (1, 0.12)
 
                 Label:
                     text: "Enter Location: "
@@ -91,16 +90,18 @@
 
                 BoxLayout:
                     orientation: "vertical"
-                    size_hint: (0.25, 0.4)
+                    size_hint: (0.3, 0.4)
 
                     TextInput:
                         id: search_location_id
                         hint_text: "e.g. Greece"
                         font_size: "15sp"
                         font_name: "barlow-reg"
-                        size_hint: (1,0.93)
+                        size_hint: (1,0.83)
                         background_color: 0, 0, 0, 0
                         foreground_color: 0.8, 0.8, 0.8, 1
+                        multiline: False
+                        on_text_validate: app.process_datasearch()
 
                     BoxLayout:
                         size_hint: (1, 0.03)
@@ -121,9 +122,18 @@
                     keep_aspect: False
                     on_release:
                         app.process_datasearch()
+                Spacer:
+                    size_hint:(0.05,1)
+                Label:
+                    id:error_message_id
+                    color: utils.get_color_from_hex("#ff0000")
+                    font_size:"25sp"
+                    text:""
+                    font_name: "barlow-reg"
+                    size_hint:(0.2,1)
 
                 Spacer:
-                    size_hint: (0.55, 1)
+                    size_hint: (0.08, 1)
 
                 Label:
                     id: date_label_id
@@ -176,7 +186,7 @@
 
                         Label:
                             id: confirmed_cases_id
-                            font_size: "200sp"
+                            font_size: "150sp"
                             text: "--"
                             font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#8695ad")
@@ -328,6 +338,7 @@
                 size_hint: (1, 0.3)
 
                 BoxLayout:
+                    id: cases_plot_id
                     orientation: "horizontal"
                     size_hint: (0.74,1)
                     spacing: "10"
@@ -337,11 +348,7 @@
                         Rectangle:
                             size: self.size
                             pos: self.pos
-                    Bar:
-                        value: 90
-                        size_hint:(0.01,0.9)
-                    Spacer:
-                        size_hint:(0.99, 1)
+                    
                 Spacer:
                     size_hint: (0.01,1)
                 
@@ -404,5 +411,6 @@
 
 
         
+
 
 
