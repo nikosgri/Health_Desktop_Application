@@ -9,7 +9,11 @@ This is a Python-based GUI application designed to track real-time global popula
 - Customizable UI: Built with Kivy, featuring a modern, responsive design.
 
 ## Screenshots
+![Greece Statistics](icons/Greece.png)
 
+![France Statistics](icons/France.png)
+
+![Sweden Statistics](icons/Sweden.png)
 
 ## Installation
 
