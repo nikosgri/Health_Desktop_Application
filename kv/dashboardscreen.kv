@@ -85,7 +85,7 @@
                 size_hint: (1, 0.1)
 
                 Label:
-                    text: "Enter Country: "
+                    text: "Enter Location: "
                     size_hint: (0.15, 0.4)
                     color: utils.get_color_from_hex("#2b2f43")
 
@@ -94,6 +94,7 @@
                     size_hint: (0.25, 0.4)
 
                     TextInput:
+                        id: search_location_id
                         hint_text: "e.g. Greece"
                         font_size: "15sp"
                         font_name: "barlow-reg"
@@ -118,13 +119,15 @@
                     size_hint: (0.1, 0.4)
                     allow_stretch: True
                     keep_aspect: False
+                    on_release:
+                        app.process_datasearch()
 
                 Spacer:
                     size_hint: (0.55, 1)
 
                 Label:
-                    id: date_id
-                    text: "[b]August 25, 2024[/b]"
+                    id: date_label_id
+                    text: "------"
                     markup: True
                     size_hint: (0.1, 0.5)
                     font_size: "15sp"
@@ -188,7 +191,7 @@
                             pos_hint:{"center_y":0.5}
 
                         Label:
-                            id: confirmes_cases_delta_id
+                            id: confirmed_cases_delta_id
                             text: "--" # Increase by
                             font_size: "22sp"
                             font_name: "roboto-medium"
@@ -373,23 +376,23 @@
                         orientation: "horizontal"
                         size_hint: (1,0.2)
                         Spacer:
-                            size_hint: (0.4,0.6)
+                            size_hint: (0.29,0.6)
                         Image:
                             source: "icons/green_circle.png"
                             size_hint: (0.05,0.4)
                             pos__hint: {"center_y":0.5}
                         Spacer:
-                            size_hint:(0.01,0.2)
+                            size_hint:(0.01,0.6)
                         Label:
                             id: recovery_rate_id
                             text: "--"
                             font_size: "15sp"
-                            size_hint: (0.2,0.6)
+                            size_hint: (0.4,0.6)
                             font_name: "roboto-medium"
                             color: utils.get_color_from_hex("#05a379")
                             pos__hint: {"center_y":0.5}
                         Spacer:
-                            size_hint: (0.25,0.1)
+                            size_hint: (0.25,0.6)
                     Spacer:
                         size_hint: (1,0.1)
             ##-------- START OF RECOVERDED CASES WIDGET & GRAPH OUTPUT --------##
